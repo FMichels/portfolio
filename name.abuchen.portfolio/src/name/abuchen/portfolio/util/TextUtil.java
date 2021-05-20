@@ -87,18 +87,25 @@ public final class TextUtil
         int len = value.length();
         int st = 0;
 
-        while ((st < len) && (Character.isWhitespace(value.charAt(st)) || Character.isSpaceChar(value.charAt(st))))
+        while ((st < len) && isWhitespace(value.charAt(st)))
         {
             st++;
         }
 
-        while ((st < len) && (Character.isWhitespace(value.charAt(len - 1))
-                        || Character.isSpaceChar(value.charAt(len - 1))))
+        while ((st < len) && Character.isWhitespace(value.charAt(len - 1)))
         {
             len--;
         }
         return ((st > 0) || (len < value.length())) ? value.substring(st, len) : value;
 
+    }
+
+    public static boolean isWhitespace(char c)
+    {
+        if (Character.isWhitespace(c) || Character.isSpaceChar(c))
+            return true;
+
+        return c == '\uFEFF'; // zero width no-break space
     }
 
     /**
@@ -198,7 +205,7 @@ public final class TextUtil
         // b) the limit of 200 characters to search has not been hit
         // c) a prefix *and* a postfix have been found
 
-        if (start < end && start < search && end > length - search && (start > 0 && end < length - 1))
+        if (start < end && start < search && end > length - search && (start > 0 && end < length))
             return json.substring(start, end);
 
         return json;
