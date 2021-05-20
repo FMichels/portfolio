@@ -184,6 +184,7 @@ public class Messages extends NLS
     public static String ColumnFix;
     public static String ColumnForeignCurrencies;
     public static String ColumnGrossDividend;
+    public static String ColumnGrossProfitLoss;
     public static String ColumnGrossValue;
     public static String ColumnHeight;
     public static String ColumnHoldingPeriod;
@@ -523,6 +524,7 @@ public class Messages extends NLS
     public static String LabelClientFilterNew;
     public static String LabelClientFilterNoCustomFilterExisting;
     public static String LabelClose;
+    public static String FilterOnlyClosedTrades;
     public static String LabelColorSchema;
     public static String LabelColumns;
     public static String LabelCommon;
@@ -599,6 +601,7 @@ public class Messages extends NLS
     public static String LabelNumberDataSeries;
     public static String LabelOneOfX;
     public static String LabelOpenTrade;
+    public static String FilterOnlyOpenTrades;
     public static String LabelOrderByTaxonomy;
     public static String LabelPassword;
     public static String LabelPasswordRepeat;
@@ -662,11 +665,19 @@ public class Messages extends NLS
     public static String LabelHeading;
     public static String LabelHeatmap;
     public static String LabelHeatmapEarnings;
+    public static String LabelHeatmapInvestments;
+    public static String LabelHeatmapInvestmentsDirect;
+    public static String LabelHeatmapInvestmentsNoSellings;
     public static String LabelHeatmapOrnament;
     public static String LabelHistoricalReturnsAndVolatiltity;
     public static String LabelJSONPathHint;
     public static String LabelJSONPathToClose;
     public static String LabelJSONPathToDate;
+    public static String LabelJSONDateFormat;
+    public static String LabelJSONDateFormatHint;
+    public static String LabelJSONPathToLow;
+    public static String LabelJSONPathToHigh;
+    public static String LabelJSONPathToVolume;
     public static String LabelKeyIndicators;
     public static String LabelMaxDrawdown;
     public static String LabelMaxDrawdownDuration;
@@ -695,6 +706,8 @@ public class Messages extends NLS
     public static String LabelTrades;
     public static String LabelTradesBasicStatistics;
     public static String LabelTradesProfitLoss;
+    public static String FilterOnlyLossMakingTrades;
+    public static String FilterOnlyProfitableTrades;
     public static String LabelTradesTurnoverRate;
     public static String LabelTradingActivityChart;
     public static String LabelTransactions;
@@ -766,6 +779,7 @@ public class Messages extends NLS
     public static String MenuExportChartData;
     public static String MenuExportData;
     public static String MenuExportDiagram;
+    public static String MenuHideInformationPane;
     public static String MenuHideSidebar;
     public static String MenuLabelSetAsStartPage;
     public static String MenuNewDashboard;
@@ -789,6 +803,7 @@ public class Messages extends NLS
     public static String MenuSettingsNew;
     public static String MenuShow;
     public static String MenuShowHideColumns;
+    public static String MenuShowInformationPane;
     public static String MenuShowSidebar;
     public static String MenuSwitchCurrencies;
     public static String MenuTaxonomyAssignmentRemove;
@@ -924,6 +939,7 @@ public class Messages extends NLS
     public static String PrefDescriptionQuandl;
     public static String PrefDivvyDiaryAPIKey;
     public static String PrefFinnhubAPIKey;
+    public static String PrefLabelEnableExperimentalFeatures;
     public static String PrefLabelNote;
     public static String PrefLabelProxyHost;
     public static String PrefLabelProxyPort;
@@ -968,10 +984,11 @@ public class Messages extends NLS
     public static String SecurityMenuDebugGetHistoricalQuotes;
     public static String SecurityMenuDeleteAllPrices;
     public static String SecurityMenuDeleteLatestQuote;
-    public static String SecurityMenuDeletePrice;
-    public static String SecurityMenuDeleteSecurity;
-    public static String SecurityMenuDeleteSingleSecurityConfirm;
+    public static String SecurityMenuDeleteMultipleSecurity;
     public static String SecurityMenuDeleteMultipleSecurityConfirm;
+    public static String SecurityMenuDeletePrice;
+    public static String SecurityMenuDeleteSingleSecurity;
+    public static String SecurityMenuDeleteSingleSecurityConfirm;
     public static String SecurityMenuDividends;
     public static String SecurityMenuEditSecurity;
     public static String SecurityMenuErrorMessageRoundingMustBeBetween0AndX;
@@ -986,6 +1003,14 @@ public class Messages extends NLS
     public static String SecurityMenuRoundToXDecimalPlaces;
     public static String SecurityMenuSearch4Securities;
     public static String SecurityMenuSell;
+    public static String SecurityMenuSetMultipleSecurityActive;
+    public static String SecurityMenuSetMultipleSecurityActiveConfirm;
+    public static String SecurityMenuSetMultipleSecurityInactive;
+    public static String SecurityMenuSetMultipleSecurityInactiveConfirm;
+    public static String SecurityMenuSetSingleSecurityActive;
+    public static String SecurityMenuSetSingleSecurityActiveConfirm;
+    public static String SecurityMenuSetSingleSecurityInactive;
+    public static String SecurityMenuSetSingleSecurityInactiveConfirm;
     public static String SecurityMenuStockSplit;
     public static String SecurityMenuAddEvent;
     public static String SecurityMenuLabelNumberOfDecimalPlaces;
@@ -1058,6 +1083,7 @@ public class Messages extends NLS
     public static String WatchlistRename;
     public static String BookmarkMenu_EditBookmarks;
     public static String FilterNotRetired;
+    public static String MenuFilterTrades;
     public static String FilterValuationNonZero;
     public static String ForceClearPersistedStateDialogTitle;
     public static String ForceClearPersistedStateMessage;

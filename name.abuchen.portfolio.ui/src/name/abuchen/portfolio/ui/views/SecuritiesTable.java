@@ -43,6 +43,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.Shell;
 
+import com.google.common.collect.Streams;
+
 import name.abuchen.portfolio.model.AccountTransaction;
 import name.abuchen.portfolio.model.Client;
 import name.abuchen.portfolio.model.PortfolioTransaction;
@@ -927,9 +929,35 @@ public final class SecuritiesTable implements ModificationListener
         }
 
         manager.add(new Separator());
+
+        // if any retired security in selection, add "unretire/activate all"
+        // option
+        if (Streams.stream((Iterable<?>) selection).anyMatch(s -> ((Security) s).isRetired()))
+        {
+            manager.add(new ConfirmActionWithSelection(Messages.SecurityMenuSetSingleSecurityActive,
+                            Messages.SecurityMenuSetMultipleSecurityActive,
+                            MessageFormat.format(Messages.SecurityMenuSetSingleSecurityActiveConfirm,
+                                            selection.getFirstElement()),
+                            Messages.SecurityMenuSetMultipleSecurityActiveConfirm, selection,
+                            (s, a) -> setRetireStatus(selection, false)));
+        }
+
+        // if any active (non-retired) security in selection, add "retire all"
+        // option
+        if (Streams.stream((Iterable<?>) selection).anyMatch(s -> !((Security) s).isRetired()))
+        {
+            manager.add(new ConfirmActionWithSelection(Messages.SecurityMenuSetSingleSecurityInactive,
+                            Messages.SecurityMenuSetMultipleSecurityInactive,
+                            MessageFormat.format(Messages.SecurityMenuSetSingleSecurityInactiveConfirm,
+                                            selection.getFirstElement()),
+                            Messages.SecurityMenuSetMultipleSecurityInactiveConfirm, selection,
+                            (s, a) -> setRetireStatus(selection, true)));
+        }
+
         if (watchlist == null)
         {
-            manager.add(new ConfirmActionWithSelection(Messages.SecurityMenuDeleteSecurity,
+            manager.add(new ConfirmActionWithSelection(Messages.SecurityMenuDeleteSingleSecurity,
+                            Messages.SecurityMenuDeleteMultipleSecurity,
                             MessageFormat.format(Messages.SecurityMenuDeleteSingleSecurityConfirm,
                                             selection.getFirstElement()),
                             Messages.SecurityMenuDeleteMultipleSecurityConfirm, selection,
@@ -1028,6 +1056,16 @@ public final class SecuritiesTable implements ModificationListener
                         .addTo(manager);
 
         manager.add(new Separator());
+    }
+
+    private void setRetireStatus(IStructuredSelection selection, boolean isRetired)
+    {
+        for (Object obj : selection)
+        {
+            Security security = (Security) obj;
+            security.setRetired(isRetired);
+        }
+        securities.refresh();
     }
 
     private void deleteSecurity(IStructuredSelection selection)
